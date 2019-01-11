@@ -10,6 +10,24 @@ class StarWarsChar extends React.Component {
       films: []
     };
 
+    [
+      this.charName,
+      this.charBirthYear,
+      this.charGender,
+      this.charHairColor,
+      this.charSkinColor,
+      this.charHeight,
+      this.charMass
+    ] = [
+      props.charName,
+      props.charBirthYear,
+      props.charGender,
+      props.charHairColor,
+      props.charSkinColor,
+      props.charHeight,
+      props.charMass
+    ]
+
     props.charFilms.forEach(film => this.fetchFilms(film));
   }
 
