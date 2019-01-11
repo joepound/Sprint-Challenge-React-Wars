@@ -33,6 +33,10 @@
     font-weight: bold;
 }
 
+.char-item-heading {
+    margin: 25px 5% 37.5px;
+}
+
 .char-list-start {
     margin-top: 25px;
 }

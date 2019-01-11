@@ -118,7 +118,7 @@ class StarWarsChar extends React.Component {
     return (
       <div className="char-item">
       {/* {alert(props.charName)} */}
-        <h1>{this.charName}</h1>
+        <h1 className="char-item-heading">{this.charName}</h1>
         <div>
           <span className="char-field">Birth Year: </span>{this.charBirthYear}
         </div>      
