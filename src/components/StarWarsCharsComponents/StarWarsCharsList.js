@@ -10,7 +10,8 @@ const StarWarsCharsList = props => {
       {props.starwarsChars.map((char, i, arr) => {
         // alert(arr.length);
         return <StarWarsChar
-          key={i}
+          key={char.name}
+          currState={props.currState}
           charName={char.name}
           charBirthYear={char.birth_year}
           charHomeworld={char.homeworld}
