@@ -36,7 +36,7 @@ const StarWarsChar = props => {
         <span className="char-field">Hair color: </span>{props.charHairColor}
       </div>
       <div>
-        <span className="char-field">Sking color: </span>{props.charSkinColor}
+        <span className="char-field">Skin color: </span>{props.charSkinColor}
       </div>      
       <div>
         <span className="char-field">Height: </span>{props.charHeight}
