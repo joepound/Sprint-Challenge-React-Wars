@@ -7,6 +7,7 @@ class StarWarsChar extends React.Component {
     super(props);
 
     this.state = {
+      homeworld: "",
       films: []
     };
 
@@ -26,13 +27,28 @@ class StarWarsChar extends React.Component {
       props.charSkinColor,
       props.charHeight,
       props.charMass
-    ]
+    ];
 
+    this.fetchHomeworld(props.charHomeworld);
     props.charFilms.forEach(film => this.fetchFilms(film));
   }
 
+  fetchHomeworld = link => {
+    fetch(link)
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        this.setState({
+          homeworld: data.name
+        })
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
+  }
+
   fetchFilms = link => {
-    let film = "";
     fetch(link)
       .then(res => {
         return res.json();
@@ -55,9 +71,9 @@ class StarWarsChar extends React.Component {
         <div>
           <span className="char-field">Birth Year: </span>{this.charBirthYear}
         </div>      
-        {/* <div>
-          <span className="char-field">Homeworld: </span>{props.charHomeworld}
-        </div>       */}
+        <div>
+          <span className="char-field">Homeworld: </span>{this.state.homeworld}
+        </div>      
         <div>
           <span className="char-field">Gender: </span>{this.charGender}
         </div>      
