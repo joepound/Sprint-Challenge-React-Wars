@@ -8,6 +8,7 @@ class StarWarsChar extends React.Component {
 
     this.state = {
       homeworld: "",
+      species: "",
       films: []
     };
 
@@ -30,6 +31,7 @@ class StarWarsChar extends React.Component {
     ];
 
     this.fetchHomeworld(props.charHomeworld);
+    this.fetchSpecies(props.charSpecies);
     props.charFilms.forEach(film => this.fetchFilms(film));
   }
 
@@ -48,6 +50,21 @@ class StarWarsChar extends React.Component {
       });
   }
 
+  fetchSpecies = link => {
+    fetch(link)
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        this.setState({
+          species: data.name
+        })
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
+  }
+  
   fetchFilms = link => {
     fetch(link)
       .then(res => {
@@ -75,6 +92,9 @@ class StarWarsChar extends React.Component {
           <span className="char-field">Homeworld: </span>{this.state.homeworld}
         </div>      
         <div>
+          <span className="char-field">Species: </span>{this.state.species}
+        </div>      
+        <div>
           <span className="char-field">Gender: </span>{this.charGender}
         </div>      
         <div>
@@ -89,10 +109,6 @@ class StarWarsChar extends React.Component {
         <div>
           <span className="char-field">Mass: </span>{this.charMass}
         </div>      
-        {/* <h3>Species:</h3>
-        <ul>
-          {props.charSpecies.map(species => <li>{species}</li>)}
-        </ul> */}
         <h3 className="char-list-start">Films:</h3>
         <ul>
           {this.state.films.map(film => <li>{film}</li>)}
