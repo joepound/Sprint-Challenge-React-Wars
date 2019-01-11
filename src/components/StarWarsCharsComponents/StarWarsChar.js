@@ -4,7 +4,7 @@ import './StarWarsChars.css';
 
 const StarWarsChar = props => {
   const fetchFilm = link => {
-    // alert(link)
+    
     let film = "";
     fetch(link)
       .then(res => {
@@ -48,10 +48,10 @@ const StarWarsChar = props => {
       <ul>
         {props.charSpecies.map(species => <li>{species}</li>)}
       </ul> */}
-      <h3 className="char-list-start">Films:</h3>
+      {/* <h3 className="char-list-start">Films:</h3>
       <ul>
         {props.charFilms.map(film => <li>{fetchFilm(film)}</li>)}
-      </ul>
+      </ul> */}
     </div>
   );
 };
