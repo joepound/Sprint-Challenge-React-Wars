@@ -1,0 +1,42 @@
+/* List styles */
+
+.char-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 95%;
+    margin: 50px auto;
+}
+
+/* Individual character styles */
+
+.char-item {
+    overflow: auto;
+    width: 42.5%;
+    height: 500px;
+    background-color: black;
+    color: yellow;
+    text-align: left;
+    border: 5px double white;
+    margin: 20px 2.5%;
+}
+
+.char-item * {
+    margin: 10px 5%;
+}
+
+.char-item ul {
+    margin: 0 0 25px 0;
+}
+
+.char-field {
+    font-weight: bold;
+}
+
+.char-item-heading {
+    margin: 25px 5% 37.5px;
+}
+
+.char-list-start {
+    margin-top: 25px;
+}
