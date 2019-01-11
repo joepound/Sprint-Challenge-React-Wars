@@ -9,6 +9,7 @@ class StarWarsChar extends React.Component {
     this.state = {
       homeworld: "",
       species: "",
+      ships: [],
       films: []
     };
 
@@ -32,6 +33,7 @@ class StarWarsChar extends React.Component {
 
     this.fetchHomeworld(props.charHomeworld);
     this.fetchSpecies(props.charSpecies);
+    props.charStarships.forEach(ship => this.fetchShips(ship));
     props.charFilms.forEach(film => this.fetchFilms(film));
   }
 
@@ -65,6 +67,21 @@ class StarWarsChar extends React.Component {
       });
   }
   
+  fetchShips = link => {
+    fetch(link)
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        this.setState({
+          ships: [...this.state.ships, data.name]
+        })
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
+  }
+
   fetchFilms = link => {
     fetch(link)
       .then(res => {
@@ -109,6 +126,12 @@ class StarWarsChar extends React.Component {
         <div>
           <span className="char-field">Mass: </span>{this.charMass}
         </div>      
+        <h3 className="char-list-start">Starships:</h3>
+        <ul>
+          {this.state.ships.length ? 
+            this.state.ships.map(ship => <li>{ship}</li>) :
+            "[NONE]"}
+        </ul>
         <h3 className="char-list-start">Films:</h3>
         <ul>
           {this.state.films.map(film => <li>{film}</li>)}

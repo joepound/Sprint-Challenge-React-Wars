@@ -19,6 +19,7 @@ const StarWarsCharsList = props => {
           charSkinColor={char.skin_color}
           charHeight={char.height}
           charMass={char.mass}
+          charStarships={char.starships}
           charFilms={char.films}
           charSpecies={char.species} />
       })}
