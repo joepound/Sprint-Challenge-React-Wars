@@ -8,6 +8,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      prevPage: "",
+      nextPage: "",
       starwarsChars: []
     };
   }
@@ -26,6 +28,8 @@ class App extends Component {
       })
       .then(data => {
         this.setState({ 
+          nextPage: data.next,
+          prevPage: data.previous,
           starwarsChars: data.results 
         });
       })
@@ -34,10 +38,22 @@ class App extends Component {
       });
   };
 
+  nextPage = () => {
+    this.getCharacters(this.state.nextPage);
+  }
+
+  prevPage = () => {
+    this.getCharacters(this.state.prevPage);
+  }
+
   render() {
     return (
       <div className="App">
         <h1 className="Header">React Wars</h1>
+        <div className="PageButtons">
+          <button disabled={!this.state.prevPage} onClick={this.prevPage}>Previous</button>
+          <button disabled={!this.state.nextPage} onClick={this.nextPage}>Next</button>
+        </div>
         <StarWarsCharsList 
           starwarsChars={this.state.starwarsChars}/>
       </div>

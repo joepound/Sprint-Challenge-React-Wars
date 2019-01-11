@@ -5,3 +5,12 @@
   color: #443e3e;
   text-shadow: 1px 1px 5px #fff;
 }
+.PageButtons{
+  display: flex;
+  justify-content: center;
+}
+.PageButtons > button {
+  width: 20%;
+  padding: 10px;
+  margin: 50px 5%;
+}
