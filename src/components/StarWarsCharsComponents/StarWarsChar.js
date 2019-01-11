@@ -106,7 +106,7 @@ class StarWarsChar extends React.Component {
       })
       .then(data => {
         this.setState({
-          films: [...this.state.films, `Episode ${data.episode_id}: ${data.title}`]
+          films: [...this.state.films, `Episode ${data.episode_id}: ${data.title}`].sort((a, b) => +a[8] - +b[8])
         })
       })
       .catch(err => {
